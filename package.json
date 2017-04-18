@@ -1,1 +1,40 @@
-{     "devDependencies": {         "scroll-behavior": "*",         "electron-lite": "kaizhu256/node-electron-lite#alpha",         "utility2": "kaizhu256/node-utility2#alpha"     },     "name":"npmtest-scroll-behavior",     "homepage": "https://github.com/npmtest/node-npmtest-scroll-behavior",     "repository": {         "type": "git",         "url": "https://github.com/npmtest/node-npmtest-scroll-behavior.git"     },     "scripts": {         "build-ci": "utility2 shReadmeTest build_ci.sh"     },     "version": "0.0.1" }
+{
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "#### test coverage for  [scroll-behavior (v0.9.3)](https://github.com/taion/scroll-behavior#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-scroll-behavior.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-scroll-behavior) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-scroll-behavior.svg)](https://travis-ci.org/npmtest/node-npmtest-scroll-behavior)",
+    "devDependencies": {
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "scroll-behavior": "*",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmtest/node-npmtest-scroll-behavior",
+    "keywords": [
+        "coverage",
+        "test",
+        "scroll-behavior"
+    ],
+    "license": "MIT",
+    "main": "lib.npmtest_scroll_behavior.js",
+    "name": "npmtest-scroll-behavior",
+    "nameAlias": "npmtest_scroll_behavior",
+    "nameOriginal": "npmtest-scroll-behavior",
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmtest/node-npmtest-scroll-behavior.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "npm install \"kaizhu256/node-utility2#alpha\" && utility2 shDeployHeroku",
+        "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+        "start": "PORT=${PORT:-8080} utility2 start test.js",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+    },
+    "version": "0.0.1"
+}

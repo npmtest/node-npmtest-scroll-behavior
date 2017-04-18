@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-scroll-behavior/node_modules/scroll-behavior/lib/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-scroll-behavior">npmtest-scroll-behavior (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-scroll-behavior/node_modules/scroll-behavior/lib/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">30% <small>(39 / 130)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">11.86% <small>(7 / 59)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">9.09% <small>(2 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">29.92% <small>(38 / 127)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric">6 statements, 4 branches</span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-scroll-behavior/node_modules/scroll-behavior/lib/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+exports.__esModule = true;
+&nbsp;
+var _off = require('dom-helpers/events/off');
+&nbsp;
+var _off2 = _interopRequireDefault(_off);
+&nbsp;
+var _on = require('dom-helpers/events/on');
+&nbsp;
+var _on2 = _interopRequireDefault(_on);
+&nbsp;
+var _scrollLeft = require('dom-helpers/query/scrollLeft');
+&nbsp;
+var _scrollLeft2 = _interopRequireDefault(_scrollLeft);
+&nbsp;
+var _scrollTop = require('dom-helpers/query/scrollTop');
+&nbsp;
+var _scrollTop2 = _interopRequireDefault(_scrollTop);
+&nbsp;
+var _requestAnimationFrame = require('dom-helpers/util/requestAnimationFrame');
+&nbsp;
+var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
+&nbsp;
+var _invariant = require('invariant');
+&nbsp;
+var _invariant2 = _interopRequireDefault(_invariant);
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? <span class="branch-0 cbranch-no" title="branch not covered" >obj </span>: { default: obj }; }
+&nbsp;
+<span class="fstat-no" title="function not covered" >function _classCallCheck(instance, Constructor) {</span> <span class="cstat-no" title="statement not covered" >if (!(instance instanceof Constructor)) { <span class="cstat-no" title="statement not covered" >throw new TypeError("Cannot call a class as a function"); </span>} </span>} /* eslint-disable no-underscore-dangle */
+&nbsp;
+// Try at most this many times to scroll, to avoid getting stuck.
+var MAX_SCROLL_ATTEMPTS = 2;
+&nbsp;
+var ScrollBehavior = function () {
+<span class="fstat-no" title="function not covered" >  function ScrollBehavior(_ref) {</span>
+<span class="cstat-no" title="statement not covered" >    var _this = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var addTransitionHook = _ref.addTransitionHook,</span>
+        stateStorage = _ref.stateStorage,
+        getCurrentLocation = _ref.getCurrentLocation,
+        shouldUpdateScroll = _ref.shouldUpdateScroll;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    _classCallCheck(this, ScrollBehavior);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._onWindowScroll = <span class="fstat-no" title="function not covered" >function () {</span></span>
+      // It's possible that this scroll operation was triggered by what will be a
+      // `POP` transition. Instead of updating the saved location immediately, we
+      // have to enqueue the update, then potentially cancel it if we observe a
+      // location update.
+<span class="cstat-no" title="statement not covered" >      if (_this._saveWindowPositionHandle === null) {</span>
+<span class="cstat-no" title="statement not covered" >        _this._saveWindowPositionHandle = (0, _requestAnimationFrame2.default)(_this._saveWindowPosition);</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (_this._windowScrollTarget) {</span>
+<span class="cstat-no" title="statement not covered" >        var _windowScrollTarget = _this._windowScrollTarget,</span>
+            xTarget = _windowScrollTarget[0],
+            yTarget = _windowScrollTarget[1];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var x = (0, _scrollLeft2.default)(window);</span>
+<span class="cstat-no" title="statement not covered" >        var y = (0, _scrollTop2.default)(window);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (x === xTarget &amp;&amp; y === yTarget) {</span>
+<span class="cstat-no" title="statement not covered" >          _this._windowScrollTarget = null;</span>
+<span class="cstat-no" title="statement not covered" >          _this._cancelCheckWindowScroll();</span>
+        }
+      }
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._saveWindowPosition = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >      _this._saveWindowPositionHandle = null;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      _this._savePosition(null, window);</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._checkWindowScrollPosition = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >      _this._checkWindowScrollHandle = null;</span>
+&nbsp;
+      // We can only get here if scrollTarget is set. Every code path that unsets
+      // scroll target also cancels the handle to avoid calling this handler.
+      // Still, check anyway just in case.
+      /* istanbul ignore if: paranoid guard */
+<span class="cstat-no" title="statement not covered" >      if (!_this._windowScrollTarget) {</span>
+<span class="cstat-skip" title="statement not covered" >        return;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      _this._scrollToTarget(window, _this._windowScrollTarget);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      ++_this._numWindowScrollAttempts;</span>
+&nbsp;
+      /* istanbul ignore if: paranoid guard */
+<span class="cstat-no" title="statement not covered" >      if (_this._numWindowScrollAttempts &gt;= MAX_SCROLL_ATTEMPTS) {</span>
+<span class="cstat-skip" title="statement not covered" >        _this._windowScrollTarget = null;</span>
+<span class="cstat-skip" title="statement not covered" >        return;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      _this._checkWindowScrollHandle = (0, _requestAnimationFrame2.default)(_this._checkWindowScrollPosition);</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._scrollToTarget = <span class="fstat-no" title="function not covered" >function (element, target) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (typeof target === 'string') {</span>
+<span class="cstat-no" title="statement not covered" >        var el = document.getElementById(target) || document.getElementsByName(target)[0];</span>
+<span class="cstat-no" title="statement not covered" >        if (el) {</span>
+<span class="cstat-no" title="statement not covered" >          el.scrollIntoView();</span>
+<span class="cstat-no" title="statement not covered" >          return;</span>
+        }
+&nbsp;
+        // Fallback to scrolling to top when target fragment doesn't exist.
+<span class="cstat-no" title="statement not covered" >        target = [0, 0]; </span>// eslint-disable-line no-param-reassign
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var _target = target,</span>
+          x = _target[0],
+          y = _target[1];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      (0, _scrollLeft2.default)(element, x);</span>
+<span class="cstat-no" title="statement not covered" >      (0, _scrollTop2.default)(element, y);</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._stateStorage = stateStorage;</span>
+<span class="cstat-no" title="statement not covered" >    this._getCurrentLocation = getCurrentLocation;</span>
+<span class="cstat-no" title="statement not covered" >    this._shouldUpdateScroll = shouldUpdateScroll;</span>
+&nbsp;
+    // This helps avoid some jankiness in fighting against the browser's
+    // default scroll behavior on `POP` transitions.
+    /* istanbul ignore if: not supported by any browsers on Travis */
+<span class="cstat-no" title="statement not covered" >    if ('scrollRestoration' in window.history) {</span>
+<span class="cstat-skip" title="statement not covered" >      this._oldScrollRestoration = window.history.scrollRestoration;</span>
+<span class="cstat-skip" title="statement not covered" >      window.history.scrollRestoration = 'manual';</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      this._oldScrollRestoration = null;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._saveWindowPositionHandle = null;</span>
+<span class="cstat-no" title="statement not covered" >    this._checkWindowScrollHandle = null;</span>
+<span class="cstat-no" title="statement not covered" >    this._windowScrollTarget = null;</span>
+<span class="cstat-no" title="statement not covered" >    this._numWindowScrollAttempts = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._scrollElements = {};</span>
+&nbsp;
+    // We have to listen to each window scroll update rather than to just
+    // location updates, because some browsers will update scroll position
+    // before emitting the location change.
+<span class="cstat-no" title="statement not covered" >    (0, _on2.default)(window, 'scroll', this._onWindowScroll);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._removeTransitionHook = addTransitionHook(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (_this._saveWindowPositionHandle !== null) {</span>
+<span class="cstat-no" title="statement not covered" >        _requestAnimationFrame2.default.cancel(_this._saveWindowPositionHandle);</span>
+<span class="cstat-no" title="statement not covered" >        _this._saveWindowPositionHandle = null;</span>
+      }
+&nbsp;
+      // It's fine to save element scroll positions here, though; the browser
+      // won't modify them.
+<span class="cstat-no" title="statement not covered" >      Object.keys(_this._scrollElements).forEach(<span class="fstat-no" title="function not covered" >function (key) {</span></span>
+<span class="cstat-no" title="statement not covered" >        _this._saveElementPosition(key);</span>
+      });
+    });
+  }
+&nbsp;
+  ScrollBehavior.prototype.registerElement = <span class="fstat-no" title="function not covered" >function registerElement(key, element, shouldUpdateScroll, context) {</span>
+<span class="cstat-no" title="statement not covered" >    !!this._scrollElements[key] ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'ScrollBehavior: There is already an element registered for `%s`.', key) : (0, _invariant2.default)(false) : void 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._scrollElements[key] = { element: element, shouldUpdateScroll: shouldUpdateScroll };</span>
+<span class="cstat-no" title="statement not covered" >    this._updateElementScroll(key, null, context);</span>
+  };
+&nbsp;
+  ScrollBehavior.prototype.unregisterElement = <span class="fstat-no" title="function not covered" >function unregisterElement(key) {</span>
+<span class="cstat-no" title="statement not covered" >    !this._scrollElements[key] ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'ScrollBehavior: There is no element registered for `%s`.', key) : (0, _invariant2.default)(false) : void 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    delete this._scrollElements[key];</span>
+  };
+&nbsp;
+  ScrollBehavior.prototype.updateScroll = <span class="fstat-no" title="function not covered" >function updateScroll(prevContext, context) {</span>
+<span class="cstat-no" title="statement not covered" >    var _this2 = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._updateWindowScroll(prevContext, context);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Object.keys(this._scrollElements).forEach(<span class="fstat-no" title="function not covered" >function (key) {</span></span>
+<span class="cstat-no" title="statement not covered" >      _this2._updateElementScroll(key, prevContext, context);</span>
+    });
+  };
+&nbsp;
+  ScrollBehavior.prototype.stop = <span class="fstat-no" title="function not covered" >function stop() {</span>
+    /* istanbul ignore if: not supported by any browsers on Travis */
+<span class="cstat-no" title="statement not covered" >    if (this._oldScrollRestoration) {</span>
+<span class="cstat-skip" title="statement not covered" >      window.history.scrollRestoration = this._oldScrollRestoration;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    (0, _off2.default)(window, 'scroll', this._onWindowScroll);</span>
+<span class="cstat-no" title="statement not covered" >    this._cancelCheckWindowScroll();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._removeTransitionHook();</span>
+  };
+&nbsp;
+  ScrollBehavior.prototype._cancelCheckWindowScroll = <span class="fstat-no" title="function not covered" >function _cancelCheckWindowScroll() {</span>
+<span class="cstat-no" title="statement not covered" >    if (this._checkWindowScrollHandle !== null) {</span>
+<span class="cstat-no" title="statement not covered" >      _requestAnimationFrame2.default.cancel(this._checkWindowScrollHandle);</span>
+<span class="cstat-no" title="statement not covered" >      this._checkWindowScrollHandle = null;</span>
+    }
+  };
+&nbsp;
+  ScrollBehavior.prototype._saveElementPosition = <span class="fstat-no" title="function not covered" >function _saveElementPosition(key) {</span>
+<span class="cstat-no" title="statement not covered" >    var element = this._scrollElements[key].element;</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._savePosition(key, element);</span>
+  };
+&nbsp;
+  ScrollBehavior.prototype._savePosition = <span class="fstat-no" title="function not covered" >function _savePosition(key, element) {</span>
+<span class="cstat-no" title="statement not covered" >    this._stateStorage.save(this._getCurrentLocation(), key, [(0, _scrollLeft2.default)(element), (0, _scrollTop2.default)(element)]);</span>
+  };
+&nbsp;
+  ScrollBehavior.prototype._updateWindowScroll = <span class="fstat-no" title="function not covered" >function _updateWindowScroll(prevContext, context) {</span>
+    // Whatever we were doing before isn't relevant any more.
+<span class="cstat-no" title="statement not covered" >    this._cancelCheckWindowScroll();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this._windowScrollTarget = this._getScrollTarget(null, this._shouldUpdateScroll, prevContext, context);</span>
+&nbsp;
+    // Updating the window scroll position is really flaky. Just trying to
+    // scroll it isn't enough. Instead, try to scroll a few times until it
+    // works.
+<span class="cstat-no" title="statement not covered" >    this._numWindowScrollAttempts = 0;</span>
+<span class="cstat-no" title="statement not covered" >    this._checkWindowScrollPosition();</span>
+  };
+&nbsp;
+  ScrollBehavior.prototype._updateElementScroll = <span class="fstat-no" title="function not covered" >function _updateElementScroll(key, prevContext, context) {</span>
+<span class="cstat-no" title="statement not covered" >    var _scrollElements$key = this._scrollElements[key],</span>
+        element = _scrollElements$key.element,
+        shouldUpdateScroll = _scrollElements$key.shouldUpdateScroll;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var scrollTarget = this._getScrollTarget(key, shouldUpdateScroll, prevContext, context);</span>
+<span class="cstat-no" title="statement not covered" >    if (!scrollTarget) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+&nbsp;
+    // Unlike with the window, there shouldn't be any flakiness to deal with
+    // here.
+<span class="cstat-no" title="statement not covered" >    this._scrollToTarget(element, scrollTarget);</span>
+  };
+&nbsp;
+  ScrollBehavior.prototype._getDefaultScrollTarget = <span class="fstat-no" title="function not covered" >function _getDefaultScrollTarget(location) {</span>
+<span class="cstat-no" title="statement not covered" >    var hash = location.hash;</span>
+<span class="cstat-no" title="statement not covered" >    if (hash &amp;&amp; hash !== '#') {</span>
+<span class="cstat-no" title="statement not covered" >      return hash.charAt(0) === '#' ? hash.slice(1) : hash;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return [0, 0];</span>
+  };
+&nbsp;
+  ScrollBehavior.prototype._getScrollTarget = <span class="fstat-no" title="function not covered" >function _getScrollTarget(key, shouldUpdateScroll, prevContext, context) {</span>
+<span class="cstat-no" title="statement not covered" >    var scrollTarget = shouldUpdateScroll ? shouldUpdateScroll.call(this, prevContext, context) : true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (!scrollTarget || Array.isArray(scrollTarget) || typeof scrollTarget === 'string') {</span>
+<span class="cstat-no" title="statement not covered" >      return scrollTarget;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var location = this._getCurrentLocation();</span>
+<span class="cstat-no" title="statement not covered" >    if (location.action === 'PUSH') {</span>
+<span class="cstat-no" title="statement not covered" >      return this._getDefaultScrollTarget(location);</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return this._stateStorage.read(location, key) || this._getDefaultScrollTarget(location);</span>
+  };
+&nbsp;
+  return ScrollBehavior;
+}();
+&nbsp;
+exports.default = ScrollBehavior;
+module.exports = exports['default'];
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 18 2017 23:16:57 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # npmtest-scroll-behavior
 
-#### test coverage for  [scroll-behavior (v0.9.3)](https://github.com/taion/scroll-behavior#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-scroll-behavior.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-scroll-behavior) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-scroll-behavior.svg)](https://travis-ci.org/npmtest/node-npmtest-scroll-behavior)
+#### basic test coverage for  [scroll-behavior (v0.9.3)](https://github.com/taion/scroll-behavior#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-scroll-behavior.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-scroll-behavior) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-scroll-behavior.svg)](https://travis-ci.org/npmtest/node-npmtest-scroll-behavior)
 
 #### Pluggable browser scroll management
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-scroll-behavior/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-scroll-behavior/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-scroll-behavior/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-scroll-behavior/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-scroll-behavior/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-scroll-behavior/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-scroll-behavior/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-scroll-behavior/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-scroll-behavior/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-scroll-behavior/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-scroll-behavior/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-scroll-behavior/build/coverage.html/index.html)
 
@@ -114,7 +114,8 @@
         "test": "npm run lint && npm run testonly",
         "testonly": "npm run tdd -- --single-run"
     },
-    "version": "0.9.3"
+    "version": "0.9.3",
+    "bin": {}
 }
 ```
 
